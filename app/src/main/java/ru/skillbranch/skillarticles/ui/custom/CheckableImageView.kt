@@ -11,7 +11,6 @@ class CheckableImageView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ImageView(context, attrs, defStyleAttr), Checkable, View.OnClickListener {
-
     private var checked = false
 
     companion object {
@@ -28,7 +27,7 @@ class CheckableImageView @JvmOverloads constructor(
         return drawableState
     }
 
-    override fun isChecked() = checked
+    override fun isChecked(): Boolean = checked
 
     override fun toggle() {
         isChecked = !checked
