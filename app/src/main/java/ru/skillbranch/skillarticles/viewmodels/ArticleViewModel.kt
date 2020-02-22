@@ -87,16 +87,17 @@ class ArticleViewModel(private val articleId: String) :
     }
 
     override fun handleLike() {
-        val toggleLike: () -> Unit = {
+        val toggleLike = {
             val info = currentState.toArticlePersonalInfo()
             repository.updateArticlePersonalInfo(info.copy(isLike = !info.isLike))
         }
+
         toggleLike()
 
         val msg = if (currentState.isLike) Notify.TextMessage("Mark is liked")
         else {
             Notify.ActionMessage(
-                "Don't like it anymore",
+                "Don`t like it anymore",
                 "No, still like it",
                 toggleLike
             )
