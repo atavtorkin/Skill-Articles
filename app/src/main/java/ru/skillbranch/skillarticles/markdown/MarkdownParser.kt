@@ -22,8 +22,7 @@ object MarkdownParser {
 
     //result regex
     private const val MARKDOWN_GROUPS = "$UNORDERED_LIST_ITEM_GROUP|$HEADER_GROUP|$QUOTE_GROUP" +
-            "|$ITALIC_GROUP|$BOLD_GROUP|$STRIKE_GROUP|$RULE_GROUP|$INLINE_GROUP|$LINK_GROUP|$BLOCK_CODE_GROUP"
-    //|$ORDER_LIST_GROUP optionally
+            "|$ITALIC_GROUP|$BOLD_GROUP|$STRIKE_GROUP|$RULE_GROUP|$INLINE_GROUP|$LINK_GROUP|$BLOCK_CODE_GROUP|$ORDER_LIST_GROUP"
 
     private val elementsPattern by lazy { Pattern.compile(MARKDOWN_GROUPS, Pattern.MULTILINE) }
 
@@ -76,8 +75,7 @@ object MarkdownParser {
             //found text
             var text: CharSequence
 
-            //groups range for iterate by groups (1..9) or (1..11) optionally
-            val groups = 1..9
+            val groups = 1..11
             var group = -1
             for (gr in groups) {
                 if (matcher.group(gr) != null) {
