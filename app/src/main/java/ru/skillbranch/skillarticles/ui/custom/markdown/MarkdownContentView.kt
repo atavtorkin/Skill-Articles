@@ -129,26 +129,6 @@ class MarkdownContentView @JvmOverloads constructor(
         val bounds = elements.map { it.bounds }
         val result = searchResult.groupByBounds(bounds)
 
-
-        val testSearchResult = ArrayList<Pair<Int, Int>>().apply {
-            add(2 to 5)
-            add(8 to 20)
-            add(22 to 30)
-            add(45 to 50)
-            add(70 to 100)
-
-        }
-
-        val testBounds = ArrayList<Pair<Int, Int>>().apply {
-            add(0 to 10)
-            add(10 to 30)
-            add(30 to 50)
-            add(50 to 60)
-            add(60 to 100)
-        }
-
-        val testResult = testSearchResult.groupByBounds(testBounds)
-
         children.forEachIndexed { index, view ->
             view as IMarkdownView
             //search for child with markdown element offset
