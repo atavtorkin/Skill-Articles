@@ -162,6 +162,13 @@ class MarkdownImageView private constructor(
         //all children width == parent width (constraint parent width)
         val ms = MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY)
 
+        if (aspectRatio != 0f) {
+            //restore width/height by aspectRatio
+            val hms =
+                MeasureSpec.makeMeasureSpec((width / aspectRatio).toInt(), MeasureSpec.EXACTLY)
+            iv_image.measure(ms, hms)
+        } else iv_image.measure(ms, heightMeasureSpec)
+
         iv_image.measure(ms, heightMeasureSpec)
         tv_title.measure(ms, heightMeasureSpec)
         tv_alt?.measure(ms, heightMeasureSpec)

@@ -6,6 +6,8 @@ import androidx.core.view.marginBottom
 import androidx.core.view.marginLeft
 import androidx.core.view.marginRight
 import androidx.core.view.marginTop
+import androidx.navigation.NavDestination
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 fun View.setMarginOptionally(
     left: Int = marginLeft,
@@ -30,4 +32,10 @@ fun View.setPaddingOptionally(
     bottom: Int = paddingBottom
 ) {
     setPadding(left, top, right, bottom)
+}
+
+fun BottomNavigationView.selectedDestination(destination: NavDestination) {
+    menu.findItem(destination.id)?.let {
+        it.isChecked = true
+    }
 }
