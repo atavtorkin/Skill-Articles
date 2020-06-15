@@ -22,6 +22,7 @@ class RootActivity : BaseActivity<RootViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //top level destination
         val appBarConfiguration: AppBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_articles,
@@ -32,15 +33,13 @@ class RootActivity : BaseActivity<RootViewModel>() {
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-        //nav_view.setupWithNavController(navController)
-
         nav_view.setOnNavigationItemSelectedListener {
             //if click on bottom navigation item -> navigate to destination by item id
             viewModel.navigate(NavigationCommand.To(it.itemId))
             true
         }
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             //if destination change set select bottom navigation item
             nav_view.selectedDestination(destination)
         }
